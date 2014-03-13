@@ -1,0 +1,5 @@
+numpy
+pdoc
+scipy
+scipy-data_fitting
+sympy
