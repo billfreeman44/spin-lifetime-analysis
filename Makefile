@@ -9,7 +9,6 @@ clean:
 	@rm stderr.log
 
 serve:
-	@cd build
-	@python -m http.server 8000
+	@python analysis/server.py
 
 .PHONY: build analysis
