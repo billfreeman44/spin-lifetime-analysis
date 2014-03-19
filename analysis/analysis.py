@@ -77,7 +77,7 @@ def all_fits():
 def save_fits(fits,
         plot_directory=os.path.join('build', 'plots'),
         json_directory=os.path.join('build', 'data'),
-        with_meta=False):
+        with_meta=False, with_meta_file=True):
     """
     Each fit in `fits` will generate a plot in `plot_directory`
     and a json file in `json_directory`.
@@ -109,7 +109,7 @@ def save_fits(fits,
 
         fit_metadata.append(meta)
 
-    if json_directory:
+    if json_directory and with_meta_file:
         f = open(os.path.join(json_directory, 'analysis.json'), 'w')
         json.dump(fit_metadata, f)
         f.close
