@@ -12,18 +12,20 @@ def reset_directory(directory):
     if os.path.isdir(directory): shutil.rmtree(directory)
     if not os.path.isdir(directory): os.makedirs(directory)
 
-def export_fit(fit, plot_directory=None, json_directory=None):
+def export_fit(fit, plot_directory=None, json_directory=None, meta=None):
     """
     Use `fit` to generate and save a plot to `plot_directory`
     and json to `json_directory`.
 
     If either `plot_directory` or `json_directory` are not given,
     the corresponding plot or json will not be saved.
+
+    If `meta` is given, it will be included in the fit's json file.
     """
     name = fit.name
 
     if json_directory:
-        fit.to_json(os.path.join(json_directory, name + '.json'), points=500)
+        fit.to_json(os.path.join(json_directory, name + '.json'), points=500, meta=meta)
 
     if plot_directory:
         plot = scipy_data_fitting.Plot(fit)
@@ -74,7 +76,8 @@ def all_fits():
 
 def save_fits(fits,
         plot_directory=os.path.join('build', 'plots'),
-        json_directory=os.path.join('build', 'data')):
+        json_directory=os.path.join('build', 'data'),
+        with_meta=False):
     """
     Each fit in `fits` will generate a plot in `plot_directory`
     and a json file in `json_directory`.
@@ -84,6 +87,8 @@ def save_fits(fits,
     If either `plot_directory` or `json_directory` are not given,
     the corresponding plots or json will not be saved.
 
+    If `with_meta` is `True`, then metadata will also be saved in the json file for each fit.
+
     See also `analysis.export_fit`.
     """
     if json_directory: reset_directory(json_directory)
@@ -91,12 +96,16 @@ def save_fits(fits,
 
     fit_metadata = []
     for fit in all_fits():
-        export_fit(fit, plot_directory, json_directory)
         meta = fit.metadata
         meta['quality'] = []
 
         if hasattr(fit.curve_fit, 'chisqr'):
             meta['quality'].append({ 'name': 'Chi-squared', 'value': fit.curve_fit.chisqr})
+
+        included_meta = None
+        if with_meta: included_meta = meta
+
+        export_fit(fit, plot_directory, json_directory, meta=included_meta)
 
         fit_metadata.append(meta)
 
