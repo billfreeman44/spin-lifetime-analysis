@@ -118,4 +118,4 @@ def main():
     """
     This is called when the analysis module (this module) is called from the interpreter.
     """
-    save_fits(all_fits())
+    save_fits(all_fits(), with_meta=True, with_meta_file=False)
