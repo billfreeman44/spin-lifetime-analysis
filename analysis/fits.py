@@ -71,6 +71,8 @@ class NonZeroField(Fig4):
             {'symbol': 'λ_F', 'value': 0.06, 'prefix': 'micro', 'units': 'μm'},
             {'symbol': 'd', 'value': 0.5, 'prefix': 'nano', 'units': 'nm'},
 
+            # This is self.parameters[7].
+            # If this changes index, update NonZeroFieldNormalized below.
             {'symbol': 'P', 'guess': 0.7,
                 'lmfit': {'min': 0, 'max': 1}},
 
@@ -118,7 +120,7 @@ class NonZeroFieldDifference(NonZeroField):
         self.expression = 'nonlocal_resistance_scaled_difference'
         self.data = data.Fig4Difference(self.subfig)
 
-class NonZeroFieldNormalized(Fig4):
+class NonZeroFieldNormalized(NonZeroField):
     """
     The normalized field fit to Figure 4 in PhysRevLett.105.167202.
 
@@ -129,50 +131,8 @@ class NonZeroFieldNormalized(Fig4):
         super().__init__(subfig)
         self.name = self.name + '_normalized'
         self.description = self.description + ', Normalized'
-
-    def init(self):
-        self.model = models.NonZeroField()
-
-        self.options['fit_function'] = 'lmfit'
-
-        self.replacements = ['ratios', 'ω', 'resistances', 'λ', 'Ω_F', 'A_J', 'R_SQ', 'σ_N']
-
-        self.independent = {'symbol': 'B', 'name': 'Magnetic Field', 'units': 'T'}
         self.dependent = {'name': 'Normalized nonlocal resistance'}
-
-        s = self.model.symbol
-        self.quantities = [
-            {'expression': 'ζ', 'name': 'ζ = W/λ'},
-            {'expression': 'θ', 'name': 'θ = λ/r'},
-            {'expression': 'ϕ', 'name': 'ϕ = L/λ'},
-            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'units': 'μm'},
-            {'expression': 'r', 'name': 'r', 'prefix': 'micro', 'units': 'μm'},
-            {'expression': 'Ω_F', 'name': 'Ω_F', 'units': 'Ω'},
-            {'expression': 'R_N', 'name': 'R_N', 'units': 'Ω'},
-        ]
-
-        self.constants = [
-            {'symbol': 'ħ', 'value': 'Planck constant over 2 pi'},
-            {'symbol': 'μ_B', 'value': 'Bohr magneton'},
-        ]
-
-        self.parameters = [
-            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'units': 'μm'},
-            {'symbol': 'W', 'value': 2.2, 'prefix': 'micro', 'units': 'μm'},
-            {'symbol': 'W_F', 'value': 1.0, 'prefix': 'micro', 'units': 'μm'},
-            {'symbol': 'σ_G', 'value': 0.5, 'prefix': 'milli', 'units': 'mS'},
-
-            {'symbol': 'ρ_F', 'value': 60, 'prefix': 'nano', 'units': 'Ω nm'},
-            {'symbol': 'λ_F', 'value': 0.06, 'prefix': 'micro', 'units': 'μm'},
-            {'symbol': 'd', 'value': 0.5, 'prefix': 'nano', 'units': 'nm'},
-
-            {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'units': 'kΩ',
-                'lmfit': {'min': 0, 'max': 10**8}},
-            {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'units': 'ps',
-                'lmfit': {'min': 0, 'max': 10**3}},
-            {'symbol': 'D', 'guess': 0.011, 'units': 'm^2 / s',
-                'lmfit': {'min': 0, 'max': 10**8}},
-        ]
+        del self.parameters[7]
 
 class NonZeroFieldNormalizedParallel(NonZeroFieldNormalized):
     """
