@@ -49,9 +49,9 @@ class NonZeroField(Fig4):
         micro_meter = r'\micro \meter'
 
         self.quantities = [
-            {'expression': 'ζ', 'name': 'ζ = W/λ'},
-            {'expression': 'θ', 'name': 'θ = λ/r'},
-            {'expression': 'ϕ', 'name': 'ϕ = L/λ'},
+            {'expression': 'ζ', 'name': 'W/λ'},
+            {'expression': 'θ', 'name': 'λ/r'},
+            {'expression': 'ϕ', 'name': 'L/λ'},
             {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'unit': 'μm', 'siunitx': micro_meter},
             {'expression': 'r', 'name': 'r', 'prefix': 'micro', 'unit': 'μm', 'siunitx': micro_meter},
             {'expression': 'Ω_F', 'name': 'Ω_F', 'unit': 'Ω', 'siunitx': r'\ohm'},
