@@ -46,14 +46,16 @@ class NonZeroField(Fig4):
             self.dependent['units'] = 'mΩ'
             self.dependent['prefix'] = 'milli'
 
+        micro_meter = r'\micro \meter'
+
         self.quantities = [
             {'expression': 'ζ', 'name': 'ζ = W/λ'},
             {'expression': 'θ', 'name': 'θ = λ/r'},
             {'expression': 'ϕ', 'name': 'ϕ = L/λ'},
-            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'unit': 'μm'},
-            {'expression': 'r', 'name': 'r', 'prefix': 'micro', 'unit': 'μm'},
-            {'expression': 'Ω_F', 'name': 'Ω_F', 'unit': 'Ω'},
-            {'expression': 'R_N', 'name': 'R_N', 'unit': 'Ω'},
+            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'unit': 'μm', 'siunitx': micro_meter},
+            {'expression': 'r', 'name': 'r', 'prefix': 'micro', 'unit': 'μm', 'siunitx': micro_meter},
+            {'expression': 'Ω_F', 'name': 'Ω_F', 'unit': 'Ω', 'siunitx': r'\ohm'},
+            {'expression': 'R_N', 'name': 'R_N', 'unit': 'Ω', 'siunitx': r'\ohm'},
         ]
 
         self.constants = [
@@ -62,25 +64,25 @@ class NonZeroField(Fig4):
         ]
 
         self.parameters = [
-            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'W', 'value': 2.2, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'W_F', 'value': 1.0, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'σ_G', 'value': 0.5, 'prefix': 'milli', 'unit': 'mS'},
+            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'unit': 'μm', 'siunitx': micro_meter},
+            {'symbol': 'W', 'value': 2.2, 'prefix': 'micro', 'unit': 'μm', 'siunitx': micro_meter},
+            {'symbol': 'W_F', 'value': 1.0, 'prefix': 'micro', 'unit': 'μm', 'siunitx': micro_meter},
+            {'symbol': 'σ_G', 'value': 0.5, 'prefix': 'milli', 'unit': 'mS', 'siunitx': r'\milli \siemens'},
 
-            {'symbol': 'ρ_F', 'value': 60, 'prefix': 'nano', 'unit': 'Ω nm'},
-            {'symbol': 'λ_F', 'value': 0.06, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'd', 'value': 0.5, 'prefix': 'nano', 'unit': 'nm'},
+            {'symbol': 'ρ_F', 'value': 60, 'prefix': 'nano', 'unit': 'Ω nm', 'siunitx': r'\ohm \nano \meter'},
+            {'symbol': 'λ_F', 'value': 0.06, 'prefix': 'micro', 'unit': 'μm', 'siunitx': micro_meter},
+            {'symbol': 'd', 'value': 0.5, 'prefix': 'nano', 'unit': 'nm', 'siunitx': r'\nano \meter'},
 
             # This is self.parameters[7].
             # If this changes index, update NonZeroFieldNormalized below.
             {'symbol': 'P', 'guess': 0.7,
                 'lmfit': {'min': 0, 'max': 1}},
 
-            {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'unit': 'kΩ',
+            {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'unit': 'kΩ', 'siunitx': r'\kilo \ohm',
                 'lmfit': {'min': 0, 'max': 10**8}},
-            {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'unit': 'ps',
+            {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'unit': 'ps', 'siunitx': r'\pico \second',
                 'lmfit': {'min': 0, 'max': 10**8}},
-            {'symbol': 'D', 'guess': 0.011, 'unit': 'm^2 / s',
+            {'symbol': 'D', 'guess': 0.011, 'unit': 'm^2 / s', 'siunitx': r'\square \meter \per \second',
                 'lmfit': {'min': 0, 'max': 10**8}},
         ]
 
