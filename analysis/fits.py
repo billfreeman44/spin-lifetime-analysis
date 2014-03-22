@@ -50,10 +50,10 @@ class NonZeroField(Fig4):
             {'expression': 'ζ', 'name': 'ζ = W/λ'},
             {'expression': 'θ', 'name': 'θ = λ/r'},
             {'expression': 'ϕ', 'name': 'ϕ = L/λ'},
-            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'unit': 'μm'},
-            {'expression': 'r', 'name': 'r', 'prefix': 'micro', 'unit': 'μm'},
-            {'expression': 'Ω_F', 'name': 'Ω_F', 'unit': 'Ω'},
-            {'expression': 'R_N', 'name': 'R_N', 'unit': 'Ω'},
+            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'units': 'μm'},
+            {'expression': 'r', 'name': 'r', 'prefix': 'micro', 'units': 'μm'},
+            {'expression': 'Ω_F', 'name': 'Ω_F', 'units': 'Ω'},
+            {'expression': 'R_N', 'name': 'R_N', 'units': 'Ω'},
         ]
 
         self.constants = [
@@ -62,23 +62,23 @@ class NonZeroField(Fig4):
         ]
 
         self.parameters = [
-            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'W', 'value': 2.2, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'W_F', 'value': 1.0, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'σ_G', 'value': 0.5, 'prefix': 'milli', 'unit': 'mS'},
+            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'units': 'μm'},
+            {'symbol': 'W', 'value': 2.2, 'prefix': 'micro', 'units': 'μm'},
+            {'symbol': 'W_F', 'value': 1.0, 'prefix': 'micro', 'units': 'μm'},
+            {'symbol': 'σ_G', 'value': 0.5, 'prefix': 'milli', 'units': 'mS'},
 
-            {'symbol': 'ρ_F', 'value': 60, 'prefix': 'nano', 'unit': 'Ω nm'},
-            {'symbol': 'λ_F', 'value': 0.06, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'd', 'value': 0.5, 'prefix': 'nano', 'unit': 'nm'},
+            {'symbol': 'ρ_F', 'value': 60, 'prefix': 'nano', 'units': 'Ω nm'},
+            {'symbol': 'λ_F', 'value': 0.06, 'prefix': 'micro', 'units': 'μm'},
+            {'symbol': 'd', 'value': 0.5, 'prefix': 'nano', 'units': 'nm'},
 
             {'symbol': 'P', 'guess': 0.7,
                 'lmfit': {'min': 0, 'max': 1}},
 
-            {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'unit': 'kΩ',
+            {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'units': 'kΩ',
                 'lmfit': {'min': 0, 'max': 10**8}},
-            {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'unit': 'ps',
+            {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'units': 'ps',
                 'lmfit': {'min': 0, 'max': 10**8}},
-            {'symbol': 'D', 'guess': 0.011, 'unit': 'm^2 / s',
+            {'symbol': 'D', 'guess': 0.011, 'units': 'm^2 / s',
                 'lmfit': {'min': 0, 'max': 10**8}},
         ]
 
@@ -145,10 +145,10 @@ class NonZeroFieldNormalized(Fig4):
             {'expression': 'ζ', 'name': 'ζ = W/λ'},
             {'expression': 'θ', 'name': 'θ = λ/r'},
             {'expression': 'ϕ', 'name': 'ϕ = L/λ'},
-            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'unit': 'μm'},
-            {'expression': 'r', 'name': 'r', 'prefix': 'micro', 'unit': 'μm'},
-            {'expression': 'Ω_F', 'name': 'Ω_F', 'unit': 'Ω'},
-            {'expression': 'R_N', 'name': 'R_N', 'unit': 'Ω'},
+            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'units': 'μm'},
+            {'expression': 'r', 'name': 'r', 'prefix': 'micro', 'units': 'μm'},
+            {'expression': 'Ω_F', 'name': 'Ω_F', 'units': 'Ω'},
+            {'expression': 'R_N', 'name': 'R_N', 'units': 'Ω'},
         ]
 
         self.constants = [
@@ -157,20 +157,20 @@ class NonZeroFieldNormalized(Fig4):
         ]
 
         self.parameters = [
-            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'W', 'value': 2.2, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'W_F', 'value': 1.0, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'σ_G', 'value': 0.5, 'prefix': 'milli', 'unit': 'mS'},
+            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'units': 'μm'},
+            {'symbol': 'W', 'value': 2.2, 'prefix': 'micro', 'units': 'μm'},
+            {'symbol': 'W_F', 'value': 1.0, 'prefix': 'micro', 'units': 'μm'},
+            {'symbol': 'σ_G', 'value': 0.5, 'prefix': 'milli', 'units': 'mS'},
 
-            {'symbol': 'ρ_F', 'value': 60, 'prefix': 'nano', 'unit': 'Ω nm'},
-            {'symbol': 'λ_F', 'value': 0.06, 'prefix': 'micro', 'unit': 'μm'},
-            {'symbol': 'd', 'value': 0.5, 'prefix': 'nano', 'unit': 'nm'},
+            {'symbol': 'ρ_F', 'value': 60, 'prefix': 'nano', 'units': 'Ω nm'},
+            {'symbol': 'λ_F', 'value': 0.06, 'prefix': 'micro', 'units': 'μm'},
+            {'symbol': 'd', 'value': 0.5, 'prefix': 'nano', 'units': 'nm'},
 
-            {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'unit': 'kΩ',
+            {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'units': 'kΩ',
                 'lmfit': {'min': 0, 'max': 10**8}},
-            {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'unit': 'ps',
+            {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'units': 'ps',
                 'lmfit': {'min': 0, 'max': 10**3}},
-            {'symbol': 'D', 'guess': 0.011, 'unit': 'm^2 / s',
+            {'symbol': 'D', 'guess': 0.011, 'units': 'm^2 / s',
                 'lmfit': {'min': 0, 'max': 10**8}},
         ]
 
@@ -238,9 +238,9 @@ class TransparentContacts(Fig4):
 
         s = self.model.symbol
         self.quantities = [
-            {'expression': s('τ'), 'name': 'τ', 'prefix': 'pico', 'unit': 'ps'},
-            {'expression': s('D'), 'name': 'D', 'unit': 'm^2 / s'},
-            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'unit': 'μm'},
+            {'expression': s('τ'), 'name': 'τ', 'prefix': 'pico', 'units': 'ps'},
+            {'expression': s('D'), 'name': 'D', 'units': 'm^2 / s'},
+            {'expression': 'λ', 'name': 'λ', 'prefix': 'micro', 'units': 'μm'},
             {'expression': 'L/λ', 'name': 'L/λ'},
         ]
 
@@ -250,9 +250,9 @@ class TransparentContacts(Fig4):
         ]
 
         self.parameters = [
-            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'unit': 'μm'},
+            {'symbol': 'L', 'value': self.param_length, 'prefix': 'micro', 'units': 'μm'},
 
-            {'symbol': 'A', 'guess': 0.3, 'prefix': 'kilo', 'unit': 'kΩ', 'lmfit': {'min': 0}},
+            {'symbol': 'A', 'guess': 0.3, 'prefix': 'kilo', 'units': 'kΩ', 'lmfit': {'min': 0}},
             {'symbol': 'α', 'guess': 50, 'lmfit': {'min': 0}},
             {'symbol': 'β', 'guess': 0.25, 'lmfit': {'min': 0}},
         ]
