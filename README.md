@@ -45,3 +45,8 @@ Serve the build directory from a local http server on port `8000` with
 ````bash
 $ make serve
 ````
+
+## Viewing fits with Fitalyzer.
+
+After generating fits with `make`, run `make serve` and load
+[io.evansosenko.com/fitalyzer/?firebase=spin-lifetime&port=8000&path=/fitalyzer](http://io.evansosenko.com/fitalyzer/?firebase=spin-lifetime&port=8000&path=/fitalyzer).
