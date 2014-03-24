@@ -39,8 +39,6 @@ def figure_4():
 
     Tuple format is `(subfig_letter, contact_spacing_(L))`,
     e.g. `('a', 2.1)`.
-
-    See `analysis.all_fits`.
     """
     return [
         ('a', 2.1),
@@ -49,28 +47,33 @@ def figure_4():
         ('d', 3.0),
     ]
 
-def all_fits():
+def nonfigure_fits():
     """
-    Returns a list of all well defined fits that can be plotted, etc.
+    Returns a list fits that will not be used for figures.
 
     Fits are of the type `scipy_data_fitting.Fit`.
     """
     all_fits = []
     for fig in figure_4():
-        all_fits.append(fits.NonZeroFieldParallel(fig))
-        all_fits.append(fits.NonZeroFieldAntiparallel(fig))
-        all_fits.append(fits.NonZeroFieldNormalizedParallel(fig))
-        all_fits.append(fits.NonZeroFieldNormalizedAntiparallel(fig))
-        all_fits.append(fits.TransparentContactsParallel(fig))
-        all_fits.append(fits.TransparentContactsAntiparallel(fig))
-        # all_fits.append(fits.TransparentContactsNormalizedParallel(fig))
-        # all_fits.append(fits.TransparentContactsNormalizedAntiparallel(fig))
+        if not fig[0] == 'c':
+            all_fits.append(fits.NonZeroFieldDifference(fig, True))
+        else:
+            all_fits.append(fits.NonZeroFieldParallel(fig, True))
 
+    return all_fits
+
+def figure_fits():
+    """
+    Returns a list fits that will be used for figures.
+
+    Fits are of the type `scipy_data_fitting.Fit`.
+    """
+    all_fits = []
+    for fig in figure_4():
         if not fig[0] == 'c':
             all_fits.append(fits.NonZeroFieldDifference(fig))
-            all_fits.append(fits.NonZeroFieldNormalizedDifference(fig))
-            all_fits.append(fits.TransparentContactsDifference(fig))
-            # all_fits.append(fits.TransparentContactsNormalizedDifference(fig))
+        else:
+            all_fits.append(fits.NonZeroFieldParallel(fig))
 
     return all_fits
 
@@ -118,8 +121,15 @@ def main():
     """
     This is called when the analysis module (this module) is called from the interpreter.
     """
-    fits = all_fits()
-    save_fits(fits, with_meta=True, with_meta_file=False)
-    save_fits(fits,
-        plot_directory=False,
+    fig_fits = figure_fits()
+    nonfig_fits = nonfigure_fits()
+    all_fits = fig_fits + nonfig_fits
+
+    save_fits(all_fits,
+        plot_directory=None,
         json_directory=os.path.join('build', 'fitalyzer'))
+
+    save_fits(fig_fits,
+        with_meta=True,
+        with_meta_file=False,
+        plot_directory=None)
