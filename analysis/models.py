@@ -60,6 +60,7 @@ class Spintronics(scipy_data_fitting.Model):
             'p to P': ( s('p'), s('P') ),
             "p' to P": ( s("p'"), s('P') ),
 
+            'θ_zero': ( s('θ'), 0 ),
             'ν_zero': ( s('ν'), 0 ),
         }
 
