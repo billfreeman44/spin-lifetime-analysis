@@ -76,13 +76,13 @@ def all_fits():
 
 def save_fits(fits,
         plot_directory=os.path.join('build', 'plots'),
-        json_directory=os.path.join('build', 'data'),
+        json_directory=os.path.join('build', 'json'),
         with_meta=False, with_meta_file=True):
     """
     Each fit in `fits` will generate a plot in `plot_directory`
     and a json file in `json_directory`.
 
-    Addtionaly, `analysis.json` will be created in `json_directory` with metadata for each fit.
+    Addtionaly, `fits.json` will be created in `json_directory` with metadata for each fit.
 
     If either `plot_directory` or `json_directory` are not given,
     the corresponding plots or json will not be saved.
@@ -95,7 +95,7 @@ def save_fits(fits,
     if plot_directory: reset_directory(plot_directory)
 
     fit_metadata = []
-    for fit in all_fits():
+    for fit in fits:
         meta = fit.metadata
         meta['quality'] = []
 
@@ -110,7 +110,7 @@ def save_fits(fits,
         fit_metadata.append(meta)
 
     if json_directory and with_meta_file:
-        f = open(os.path.join(json_directory, 'analysis.json'), 'w')
+        f = open(os.path.join(json_directory, 'fits.json'), 'w')
         json.dump(fit_metadata, f)
         f.close
 
@@ -118,4 +118,9 @@ def main():
     """
     This is called when the analysis module (this module) is called from the interpreter.
     """
-    save_fits(all_fits())
+    fits = all_fits()
+    save_fits(fits, with_meta=True, with_meta_file=False)
+    save_fits(fits,
+        plot_directory=False,
+        json_directory=os.path.join('build', 'fitalyzer'))
+
