@@ -32,12 +32,17 @@ class NonZeroField(Fig4):
     Must set `self.expression` and `self.data` before using.
     """
 
+    def __init__(self, subfig, zero_theta=False):
+        self.zero_theta = zero_theta
+        super().__init__(subfig)
+
     def init(self):
         self.model = models.NonZeroField()
 
         self.options['fit_function'] = 'lmfit'
 
         self.replacements = ['ratios', 'ω', "p, p' to P", 'resistances', 'λ', 'Ω_F', 'A_J']
+        if self.zero_theta: self.replacements.insert(0, 'θ_zero')
 
         self.independent = {'symbol': 'B', 'name': 'Magnetic Field', 'units': 'T'}
         self.dependent = {'name': 'Nonlocal resistance', 'units': 'Ω'}
@@ -55,6 +60,9 @@ class NonZeroField(Fig4):
             {'expression': 'Ω_F', 'name': 'Ω_F', 'unit': 'Ω'},
             {'expression': 'R_N', 'name': 'R_N', 'unit': 'Ω'},
         ]
+        if self.zero_theta:
+            del self.quantities[1]
+            del self.quantities[3]
 
         self.constants = [
             {'symbol': 'ħ', 'value': 'Planck constant over 2 pi'},
@@ -83,14 +91,15 @@ class NonZeroField(Fig4):
             {'symbol': 'D', 'guess': 0.011, 'unit': 'm^2 / s',
                 'lmfit': {'min': 0, 'max': 10**8}},
         ]
+        if self.zero_theta: del self.parameters[8]
 
 class NonZeroFieldParallel(NonZeroField):
     """
     The parallel field fit to Figure 4 in PhysRevLett.105.167202.
     """
 
-    def __init__(self, subfig):
-        super().__init__(subfig)
+    def __init__(self, subfig, zero_theta=False):
+        super().__init__(subfig, zero_theta)
         self.name = self.name + '_parallel'
         self.description = self.description + ', Parallel'
         self.expression = 'nonlocal_resistance_scaled'
@@ -101,8 +110,8 @@ class NonZeroFieldAntiparallel(NonZeroField):
     The antiparallel field fit to Figure 4 in PhysRevLett.105.167202.
     """
 
-    def __init__(self, subfig):
-        super().__init__(subfig)
+    def __init__(self, subfig, zero_theta=False):
+        super().__init__(subfig, zero_theta)
         self.name = self.name + '_antiparallel'
         self.description = self.description + ', Antiparallel'
         self.expression = 'nonlocal_resistance_scaled_antiparallel'
@@ -113,8 +122,8 @@ class NonZeroFieldDifference(NonZeroField):
     The field difference fit to Figure 4 in PhysRevLett.105.167202.
     """
 
-    def __init__(self, subfig):
-        super().__init__(subfig)
+    def __init__(self, subfig, zero_theta=False):
+        super().__init__(subfig, zero_theta)
         self.name = self.name + '_difference'
         self.description = self.description + ', Difference'
         self.expression = 'nonlocal_resistance_scaled_difference'
@@ -127,8 +136,8 @@ class NonZeroFieldNormalized(NonZeroField):
     Must set `self.expression` and `self.data` before using.
     """
 
-    def __init__(self, subfig):
-        super().__init__(subfig)
+    def __init__(self, subfig, zero_theta=False):
+        super().__init__(subfig, zero_theta)
         self.name = self.name + '_normalized'
         self.description = self.description + ', Normalized'
         self.dependent = {'name': 'Normalized nonlocal resistance'}
@@ -139,8 +148,8 @@ class NonZeroFieldNormalizedParallel(NonZeroFieldNormalized):
     The normalized parallel field fit to Figure 4 in PhysRevLett.105.167202.
     """
 
-    def __init__(self, subfig):
-        super().__init__(subfig)
+    def __init__(self, subfig, zero_theta=False):
+        super().__init__(subfig, zero_theta)
         self.name = self.name + '_parallel'
         self.description = self.description + ', Parallel'
         self.expression = 'g'
@@ -151,8 +160,8 @@ class NonZeroFieldNormalizedAntiparallel(NonZeroFieldNormalized):
     The normalized antiparallel field fit to Figure 4 in PhysRevLett.105.167202.
     """
 
-    def __init__(self, subfig):
-        super().__init__(subfig)
+    def __init__(self, subfig, zero_theta=False):
+        super().__init__(subfig, zero_theta)
         self.name = self.name + '_antiparallel'
         self.description = self.description + ', Antiparallel'
         self.expression = '-g'
@@ -163,8 +172,8 @@ class NonZeroFieldNormalizedDifference(NonZeroFieldNormalized):
     The normalized difference field fit to Figure 4 in PhysRevLett.105.167202.
     """
 
-    def __init__(self, subfig):
-        super().__init__(subfig)
+    def __init__(self, subfig, zero_theta=False):
+        super().__init__(subfig, zero_theta)
         self.name = self.name + '_difference'
         self.description = self.description + ', Difference'
         self.expression = 'abs(g)'
