@@ -60,6 +60,8 @@ class NonZeroField(Fig4):
             {'expression': 'Ω_F', 'name': 'Ω_F', 'units': 'Ω'},
             {'expression': 'R_N', 'name': 'R_N', 'units': 'Ω'},
         ]
+        # Delete θ and r.
+        # If the order changes above these indexes must be updated.
         if self.zero_theta:
             del self.quantities[1]
             del self.quantities[3]
@@ -84,6 +86,7 @@ class NonZeroField(Fig4):
             {'symbol': 'P', 'guess': 0.7,
                 'lmfit': {'min': 0, 'max': 1}},
 
+            # This is self.parameters[8].
             {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'units': 'kΩ',
                 'lmfit': {'min': 0, 'max': 10**8}},
             {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'units': 'ps',
@@ -91,6 +94,8 @@ class NonZeroField(Fig4):
             {'symbol': 'D', 'guess': 0.011, 'units': 'm^2 / s',
                 'lmfit': {'min': 0, 'max': 10**8}},
         ]
+        # Delete and Ω_C.
+        # If the order changes above this index must be updated.
         if self.zero_theta: del self.parameters[8]
 
 class NonZeroFieldParallel(NonZeroField):
