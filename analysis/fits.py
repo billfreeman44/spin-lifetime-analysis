@@ -90,7 +90,8 @@ class NonZeroField(Fig4):
             # This is self.parameters[8].
             {'symbol': 'Ω_C', 'guess': 1, 'prefix': 'kilo', 'units': 'kΩ',
                 'lmfit': {'min': 0, 'max': 10**8}},
-            {'symbol': 'τ', 'guess': 100, 'prefix': 'pico', 'units': 'ps',
+
+            {'symbol': 'τ', 'guess': 10**8, 'prefix': 'pico', 'units': 'ps',
                 'lmfit': {'min': 0, 'max': 10**8}},
             {'symbol': 'D', 'guess': 0.011, 'units': 'm^2 / s',
                 'lmfit': {'min': 0, 'max': 10**8}},
