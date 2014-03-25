@@ -25,14 +25,14 @@ class Spintronics(scipy_data_fitting.Model):
             'L', 'W', 'W_F', 'P', 'p', "p'", 'P_σ', 'P_Σ',
             'R_SQ','R_F', 'R_C', 'Ω_F', 'Ω_C',
             'σ_N', 'σ_G', 'ρ_F', 'λ_F', 'A_J', 'd',
-            'μ_B', 'ħ')
+            'μ_B', 'ħ', 'g')
 
     def set_replacements(self):
         s = self.symbol
         sqrt = sympy.functions.sqrt
 
-        W, L, D, λ, B, ω, τ, r, μ_B, ħ = self.get_symbols(
-            'W', 'L', 'D', 'λ', 'B', 'ω', 'τ', 'r', 'μ_B', 'ħ')
+        W, L, D, λ, B, ω, τ, r, μ_B, ħ, g = self.get_symbols(
+            'W', 'L', 'D', 'λ', 'B', 'ω', 'τ', 'r', 'μ_B', 'ħ', 'g')
 
         W_F, R_SQ, R_F, R_C, Ω_F, Ω_C, σ_N, σ_G, ρ_F, λ_F, A_J, d = self.get_symbols(
             'W_F', 'R_SQ', 'R_F', 'R_C', 'Ω_F', 'Ω_C', 'σ_N', 'σ_G', 'ρ_F', 'λ_F', 'A_J', 'd')
@@ -40,7 +40,7 @@ class Spintronics(scipy_data_fitting.Model):
         P_σ, P_Σ = self.get_symbols('P_σ', 'P_Σ')
 
         self.replacements = {
-            'ω': ( s('ω'), 2 * μ_B * B / ħ ),
+            'ω': ( s('ω'), g * μ_B * B / ħ ),
             'ζ': ( s('ζ'), W / λ ),
             'θ': ( s('θ'), λ / r ),
             'ϕ': ( s('ϕ'), L / λ ),
@@ -88,9 +88,9 @@ class Spintronics(scipy_data_fitting.Model):
         ex['R_N'] = s('λ') / (L * W * s('σ_N'))
 
         ex['f_max'] = self.replace('f', 'ν_zero')
-        ex['g'] = ex['f'] / ex['f_max']
-        ex['-g'] = - ex['g']
-        ex['abs(g)'] = abs(ex['g'])
+        ex['f/f0'] = ex['f'] / ex['f_max']
+        ex['-f/f0'] = - ex['f']
+        ex['abs(f/f0)'] = abs(ex['f/f0'])
 
         ex['nonlocal_resistance'] = R_SQ * (p * pp / ζ) * ex['f']
         ex['nonlocal_resistance_scaled'] = (W * L)**(-1) * ex['nonlocal_resistance']

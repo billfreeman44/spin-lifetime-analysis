@@ -69,6 +69,7 @@ class NonZeroField(Fig4):
         self.constants = [
             {'symbol': 'ħ', 'value': 'Planck constant over 2 pi'},
             {'symbol': 'μ_B', 'value': 'Bohr magneton'},
+            {'symbol': 'g', 'value': 2},
         ]
 
         self.parameters = [
@@ -157,7 +158,7 @@ class NonZeroFieldNormalizedParallel(NonZeroFieldNormalized):
         super().__init__(subfig, zero_theta)
         self.name = self.name + '_parallel'
         self.description = self.description + ', Parallel'
-        self.expression = 'g'
+        self.expression = 'f/f0'
         self.data = data.Fig4NormalizedParallel(self.subfig)
 
 class NonZeroFieldNormalizedAntiparallel(NonZeroFieldNormalized):
@@ -169,7 +170,7 @@ class NonZeroFieldNormalizedAntiparallel(NonZeroFieldNormalized):
         super().__init__(subfig, zero_theta)
         self.name = self.name + '_antiparallel'
         self.description = self.description + ', Antiparallel'
-        self.expression = '-g'
+        self.expression = '-f/f0'
         self.data = data.Fig4NormalizedAntiparallel(self.subfig)
 
 class NonZeroFieldNormalizedDifference(NonZeroFieldNormalized):
@@ -181,7 +182,7 @@ class NonZeroFieldNormalizedDifference(NonZeroFieldNormalized):
         super().__init__(subfig, zero_theta)
         self.name = self.name + '_difference'
         self.description = self.description + ', Difference'
-        self.expression = 'abs(g)'
+        self.expression = 'abs(f/f0)'
         self.data = data.Fig4NormalizedDifference(self.subfig)
 
 class TransparentContacts(Fig4):
