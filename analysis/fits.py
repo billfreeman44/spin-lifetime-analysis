@@ -39,6 +39,10 @@ class NonZeroField(Fig4):
     def init(self):
         self.model = models.NonZeroField()
 
+        if self.zero_theta:
+            self.name = self.name + '_infinite_contact_resistance'
+            self.description = self.description + ', R_C → ∞'
+
         self.options['fit_function'] = 'lmfit'
 
         self.replacements = ['ratios', 'ω', "p, p' to P", 'resistances', 'λ', 'Ω_F', 'A_J']
