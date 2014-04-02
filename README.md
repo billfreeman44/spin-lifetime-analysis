@@ -50,3 +50,24 @@ $ make serve
 
 After generating fits with `make`, run `make serve` and load
 [io.evansosenko.com/fitalyzer/?firebase=spin-lifetime&port=8000&path=/fitalyzer](http://io.evansosenko.com/fitalyzer/?firebase=spin-lifetime&port=8000&path=/fitalyzer).
+
+## License
+
+This code is licensed under the MIT license
+with the exception of any files under the path `data/PhysRevLett.105.167202`.
+
+All files under the path `data/PhysRevLett.105.167202`
+were compiled from data presented in:
+
+> Tunneling Spin Injection into Single Layer Graphene
+> Wei Han, K. Pi, K. M. McCreary, Yan Li, Jared J. I. Wong, Adrian G. Swartz, and Roland K. Kawakami, Phys. Rev. Lett. 105, 167202 (2010)
+
+This data was used with permission and is available for download:
+[Joint Laboratory for Spintronics Research, Department of Physics and Astronomy, University of California, Riverside](http://physics.ucr.edu/~kawakami/jlsrPublications.html).
+
+## Warranty
+
+This software is provided "as is" and without any express or
+implied warranties, including, without limitation, the implied
+warranties of merchantibility and fitness for a particular
+purpose.
