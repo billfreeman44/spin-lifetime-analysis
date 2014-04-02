@@ -1,7 +1,5 @@
 # Spin lifetime analysis
 
-**Copyright 2014 Evan Sosenko**
-
 ## Requirements
 
 - [Python 3](http://www.python.org/)
@@ -59,7 +57,7 @@ with the exception of any files under the path `data/PhysRevLett.105.167202`.
 All files under the path `data/PhysRevLett.105.167202`
 were compiled from data presented in:
 
-> Tunneling Spin Injection into Single Layer Graphene
+> [Tunneling Spin Injection into Single Layer Graphene](http://link.aps.org/doi/10.1103/PhysRevLett.105.167202).
 > Wei Han, K. Pi, K. M. McCreary, Yan Li, Jared J. I. Wong, Adrian G. Swartz, and Roland K. Kawakami, Phys. Rev. Lett. 105, 167202 (2010)
 
 This data was used with permission and is available for download:
