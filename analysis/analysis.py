@@ -60,6 +60,14 @@ def nonfigure_fits():
         else:
             all_fits.append(fits.NonZeroFieldParallel(fig, True))
 
+    # Create a fit with large lifetime.
+    fit_1 = fits.NonZeroFieldNormalizedDifference(figure_4()[3])
+    fit_1.name = fit_1.name + '_large_lifetime'
+    fit_1.description = fit_1.description + ', Large Lifetime'
+    # If the parameters order changes this index must be updated.
+    fit_1.parameters[8]['guess'] = 10**4
+    all_fits.append(fit_1)
+
     return all_fits
 
 def figure_fits():
@@ -74,14 +82,6 @@ def figure_fits():
             all_fits.append(fits.NonZeroFieldDifference(fig))
         else:
             all_fits.append(fits.NonZeroFieldParallel(fig))
-
-    # Create a fit with large lifetime.
-    fit_1 = fits.NonZeroFieldNormalizedDifference(figure_4()[3])
-    fit_1.name = fit_1.name + 'large_lifetime'
-    fit_1.description = fit_1.description + ', Large lifetime'
-    # If the parameters order changes this index must be updated.
-    fit_1.parameters[8]['guess'] = 10**4
-    all_fits.append(fit_1)
 
     return all_fits
 
