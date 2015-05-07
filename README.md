@@ -1,5 +1,7 @@
 # Spin lifetime analysis
 
+[![MIT License](https://img.shields.io/github/license/evansosenko/spin-lifetime-analysis.svg)](./LICENSE.txt)
+
 ## Requirements
 
 - [Python 3](http://www.python.org/)
