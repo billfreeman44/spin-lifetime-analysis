@@ -5,6 +5,7 @@ import os
 import sys
 import http.server
 import socketserver
+import ssl
 
 PORT = 8000
 
@@ -15,6 +16,10 @@ class HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 def server(port):
     httpd = socketserver.TCPServer(('', port), HTTPRequestHandler)
+    httpd.socket = ssl.wrap_socket(
+       httpd.socket,
+       server_side=True,
+       certfile='localhost.pem')
     return httpd
 
 if __name__ == "__main__":
@@ -22,7 +27,7 @@ if __name__ == "__main__":
     httpd = server(port)
     try:
         os.chdir('build')
-        print("\nserving from build/ at localhost:" + str(port))
+        print("\nserving from build/ at https://localhost:" + str(port))
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("\n...shutting down http server")
