@@ -1,0 +1,17 @@
+numpy==1.10.4
+pdoc==0.3.1
+scipy==0.17.0
+scipy-data-fitting==0.2.5
+sympy==1.0
+## The following requirements were added by pip freeze:
+cycler==0.10.0
+lmfit==0.8.3
+Mako==1.0.4
+Markdown==2.4.1
+MarkupSafe==0.23
+matplotlib==1.5.1
+mpmath==0.19
+pyparsing==2.1.0
+python-dateutil==2.5.0
+pytz==2015.7
+six==1.10.0
