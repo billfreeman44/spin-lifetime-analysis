@@ -1,5 +1,4 @@
 numpy
-pdoc
 scipy
-scipy-data_fitting
+scipy-data_fitting>=0.3.0,<1.0.0
 sympy
