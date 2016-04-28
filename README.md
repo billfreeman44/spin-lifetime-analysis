@@ -11,9 +11,9 @@
 
 Install the required Python packages with
 
-````bash
+```
 $ pip install -r requirements.txt
-````
+```
 
 Depending on how your system is configured:
 
@@ -25,9 +25,9 @@ Depending on how your system is configured:
 
 Execute the analysis with
 
-````bash
+```
 $ make
-````
+```
 
 Output will be saved in the `build` directory.
 
@@ -36,15 +36,15 @@ and errors to `stderr.log`.
 
 Remove the build and logs with
 
-````bash
+```
 $ make clean
-````
+```
 
 Serve the build directory from a local http server on port `8000` with
 
-````bash
+```
 $ make serve
-````
+```
 
 ## Viewing fits with Fitalyzer.
 
