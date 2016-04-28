@@ -15,11 +15,56 @@ Install the required Python packages with
 $ pip install -r requirements.txt
 ```
 
-Depending on how your system is configured:
+### Reproducible requirements
 
-* You may need to run this commands with `sudo`.
-* You may want to install the core SciPy packages via your package manager.
-* You may want to use [virtualenv](http://www.virtualenv.org/en/latest/).
+The `requirements.txt` file uses major version semver constraints.
+To install strict package dependency versions, use
+
+```
+$ pip install -r requirements.txt.lock
+```
+
+Update the lock file to match your environment with
+
+```
+$ pip freeze -r requirements.txt > requirements.txt.lock
+```
+
+### Setup troubleshooting
+
+This is tested with Python 3.5.1 on 64-bit Linux
+using an isolated Python Virtual Environment.
+
+Running on OS X or Windows may require more preparation
+then the single pip install command above.
+
+Installing Python packages globally with `sudo pip` is not recommended.
+
+Always keep pip updated first with
+
+```
+$ pip install --update pip
+```
+
+If pip is unable to compile the C extensions required by numpy, etc.,
+you generally have two options:
+
+  - Install NumPy and other core SciPy packages via your package manager.
+    Then, install the other requirements normally at the user-level with pip.
+    If using virtual environments with this method,
+    make sure the environment is created with `--system-site-packages`.
+
+  - Install a Python distribution such as [Anaconda]
+    that bundles these dependncies and provides tools for
+    managing Python environments.
+
+To use `make` on OS X, install [Xcode], the Apple developer tools.
+For Windows, download: [Make for Windows] and place `make.exe` in your PATH,
+(or in the project root).
+
+[Anaconda]: https://www.continuum.io/anaconda
+[Make for Windows]: http://gnuwin32.sourceforge.net/packages/make.htm
+[Xcode]: https://developer.apple.com/xcode/
 
 ## Usage
 
