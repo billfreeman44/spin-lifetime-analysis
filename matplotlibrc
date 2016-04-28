@@ -2,7 +2,7 @@ backend : SVG
 
 text.color : 002b36
 
-axes.color_cycle : 2aa198, 002b36
+axes.prop_cycle : cycler('color', '2aa198, 002b36')
 
 axes.facecolor : fdf6e3
 axes.edgecolor : 657b83
