@@ -149,5 +149,4 @@ def main():
 
     save_fits(fig_fits,
         with_meta=True,
-        with_meta_file=False,
-        plot_directory=None)
+        with_meta_file=False)
