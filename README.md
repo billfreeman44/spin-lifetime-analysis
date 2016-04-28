@@ -59,7 +59,7 @@ you generally have two options:
     managing Python environments.
 
 To use `make` on OS X, install [Xcode], the Apple developer tools.
-For Windows, download: [Make for Windows] and place `make.exe` in your PATH,
+For Windows, download [Make for Windows] and place `make.exe` in your PATH
 (or in the project root).
 
 [Anaconda]: https://www.continuum.io/anaconda
