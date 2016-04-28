@@ -82,7 +82,7 @@ def save_fits(fits,
     Each fit in `fits` will generate a plot in `plot_directory`
     and a json file in `json_directory`.
 
-    Addtionaly, `fits.json` will be created in `json_directory` with metadata for each fit.
+    Additionally, `fits.json` will be created in `json_directory` with metadata for each fit.
 
     If either `plot_directory` or `json_directory` are not given,
     the corresponding plots or json will not be saved.
