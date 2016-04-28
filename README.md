@@ -52,7 +52,7 @@ After generating fits with `make`, run `make serve` and load
 [io.evansosenko.com/fitalyzer/?firebase=spin-lifetime&port=8000&path=/fitalyzer](http://io.evansosenko.com/fitalyzer/?firebase=spin-lifetime&port=8000&path=/fitalyzer).
 
 Note: you must visit [https://localhost:8000](https://localhost:8000)
-in your browser and accecpt the SSL certificate for this to work.
+in your browser and accept the SSL certificate for this to work.
 
 ## License
 
