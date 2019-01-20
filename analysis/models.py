@@ -25,7 +25,7 @@ class Spintronics(scipy_data_fitting.Model):
             'L', 'W', 'W_F', 'P', 'p', "p'", 'P_σ', 'P_Σ',
             'R_SQ','R_F', 'R_C', 'Ω_F', 'Ω_C',
             'σ_N', 'σ_G', 'ρ_F', 'λ_F', 'A_J', 'd',
-            'μ_B', 'ħ', 'g')
+            'μ_B', 'ħ', 'g','💩')
 
     def set_replacements(self):
         s = self.symbol
